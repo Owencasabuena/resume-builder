@@ -1,30 +1,17 @@
-import { useState } from "react"
 import Button from "../common/Button";
 
-export default function ProjectForm() {
-    const [formData, setFormData] = useState({
-        fullName: 'Owen Darl Casabuena',
-        address: 'Dasmarinas, Cavite',
-        email: 'owencasabuena@gmail.com',
-        phone: '+63 993 375 8318',
-        links: [{
-            id: crypto.randomUUID(),
-            label: 'github',
-            value: 'owencasabuena'
-        }]
-    });
-
+export default function ProfileForm({ profileData, setProfileData }) {
     const handleChange = (e) => {
         const { name, value } = e.target;
 
-        setFormData(prev => ({
+        setProfileData(prev => ({
             ...prev,
             [name]: value
         }));
     };
 
     const addLinkField = () => {
-        setFormData(prev => {
+        setProfileData(prev => {
             return {
                 ...prev,
                 links: [
@@ -40,7 +27,7 @@ export default function ProjectForm() {
     };
 
     const handleLinkChange = (id, field, value) => {
-        setFormData(prev => ({
+        setProfileData(prev => ({
             ...prev,
             links: prev.links.map(link => link.id === id ? { ...link, [field]: value } : link)
         }));
@@ -50,41 +37,41 @@ export default function ProjectForm() {
         <form>
             <fieldset>
                 <legend>Personal Information</legend>
-                <label htmlFor="fullName">Full Name:</label>
+                <label>Full Name:</label>
                 <input
                     type="text"
                     name="fullName"
-                    value={formData.fullName}
+                    value={profileData.fullName}
                     onChange={handleChange}
                 />
-                <label htmlFor="address">Address:</label>
+                <label>Address:</label>
                 <input
                     type="text"
                     name="address"
-                    value={formData.address}
+                    value={profileData.address}
                     onChange={handleChange}
                 />
-                <label htmlFor="email">Email:</label>
+                <label>Email:</label>
                 <input
                     type="email"
                     name="email"
-                    value={formData.email}
+                    value={profileData.email}
                     onChange={handleChange}
                 />
-                <label htmlFor="phone">Phone:</label>
+                <label>Phone:</label>
                 <input
                     type="tel"
                     name="phone"
-                    value={formData.phone}
+                    value={profileData.phone}
                     onChange={handleChange}
                 />
             </fieldset>
 
             <fieldset>
                 <legend>Links</legend>
-                {formData.links.map((link) => (
+                {profileData.links.map((link) => (
                     <div key={link.id}>
-                        <label htmlFor="label">Label:</label>
+                        <label>Label:</label>
                         <input 
                             type="text" 
                             name="label" 
@@ -92,7 +79,7 @@ export default function ProjectForm() {
                             onChange={(e) => handleLinkChange(link.id, "label", e.target.value)}
                         />
 
-                        <label htmlFor="label">Value:</label>
+                        <label>Value:</label>
                         <input 
                             type="text" 
                             name="value" 
@@ -103,8 +90,6 @@ export default function ProjectForm() {
                 ))}
                 <Button variant="ghost" onClick={addLinkField}>Add Link</Button>
             </fieldset>
-
-            <Button variant="primary" type="submit">Submit</Button>
         </form>
     )
 }

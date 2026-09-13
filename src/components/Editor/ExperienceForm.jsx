@@ -1,24 +1,13 @@
 import { useState } from 'react';
 import Button from '../common/Button';
 
-export default function ExperienceForm() {
-    const [formData, setFormData] = useState([
-        {
-            id: crypto.randomUUID(),
-            companyName: 'Google',
-            position: 'Software Engineer',
-            startDate: '2024',
-            endDate: 'present',
-            location: 'Mountain View, CA'
-        }
-    ]);
-
-    const [selectedId, setSelectedId] = useState(formData[0]?.id ?? null);
-    const selectedExperience = formData.find(item => item.id === selectedId);
+export default function ExperienceForm({ experienceData, setExperienceData }) {
+    const [selectedId, setSelectedId] = useState(experienceData[0]?.id ?? null);
+    const selectedExperience = experienceData.find(item => item.id === selectedId);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevData => {
+        setExperienceData(prevData => {
             return prevData.map(item => {
                 if (item.id === selectedId) {
                     return { ...item, [name]: value };
@@ -37,7 +26,7 @@ export default function ExperienceForm() {
             endDate: '',
             location: ''
         };
-        setFormData(prevData => [...prevData, newExperience]);
+        setExperienceData(prevData => [...prevData, newExperience]);
         setSelectedId(newExperience.id);
     };
     
@@ -51,11 +40,11 @@ export default function ExperienceForm() {
 
     return (
         <>    
-            {formData.length === 0 && (
+            {experienceData.length === 0 && (
                 <p>No experience entries available. Please add one.</p>
             )}
 
-            {formData.map((item) => {
+            {experienceData.map((item) => {
                 return (
                     <Button variant="ghost" onClick={() => setSelectedId(item.id)}>
                         <h3>{item.companyName}</h3>

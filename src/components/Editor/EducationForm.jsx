@@ -1,24 +1,13 @@
 import { useState } from "react";
 import Button from "../common/Button";
 
-export default function EducationForm() {
-    const [formData, setFormData] = useState([
-        {
-            id: crypto.randomUUID(),
-            schoolName: 'National College of Science and Technology',
-            degree: 'Bachelor of Science in Computer Science',
-            startDate: '2024',
-            endDate: 'present',
-            location: 'Dasmarinas, Cavite'
-        }
-    ]);
-
-    const [selectedId, setSelectedId] = useState(formData[0]?.id ?? null);
-    const selectedEducation = formData.find(item => item.id === selectedId);
+export default function EducationForm({ educationData, setEducationData }) {
+    const [selectedId, setSelectedId] = useState(educationData[0]?.id ?? null);
+    const selectedEducation = educationData.find(item => item.id === selectedId);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevData => {
+        setEducationData(prevData => {
             return prevData.map(item => {
                 if (item.id === selectedId) {
                     return { ...item, [name]: value };
@@ -37,7 +26,7 @@ export default function EducationForm() {
             endDate: '',
             location: ''
         };
-        setFormData(prevData => [...prevData, newEducation]);
+        setEducationData(prevData => [...prevData, newEducation]);
         setSelectedId(newEducation.id);
     };
 
@@ -51,11 +40,11 @@ export default function EducationForm() {
 
     return (
         <>    
-            {formData.length === 0 && (
+            {educationData.length === 0 && (
                 <p>No education entries available. Please add one.</p>
             )}
 
-            {formData.map((item) => {
+            {educationData.map((item) => {
                 return (
                     <Button variant="ghost" onClick={() => setSelectedId(item.id)}>
                         <h3>{item.schoolName}</h3>
@@ -67,35 +56,35 @@ export default function EducationForm() {
                 <form>
                     <fieldset>
                         <legend>Education Information</legend>
-                        <label htmlFor="schoolName">School Name:</label>
+                        <label>School Name:</label>
                         <input
                             type="text"
                             name="schoolName"
                             value={selectedEducation.schoolName}
                             onChange={handleInputChange}
                         />
-                        <label htmlFor="degree">Degree:</label>
+                        <label>Degree:</label>
                         <input
                             type="text"
                             name="degree"
                             value={selectedEducation.degree}
                             onChange={handleInputChange}
                         />
-                        <label htmlFor="startDate">Start Date:</label>
+                        <label>Start Date:</label>
                         <input
                             type="text"
                             name="startDate"
                             value={selectedEducation.startDate}
                             onChange={handleInputChange}
                         />
-                        <label htmlFor="endDate">End Date:</label>
+                        <label>End Date:</label>
                         <input
                             type="text"
                             name="endDate"
                             value={selectedEducation.endDate}
                             onChange={handleInputChange}
                         />
-                        <label htmlFor="location">Location:</label>
+                        <label>Location:</label>
                         <input
                             type="text"
                             name="location"
