@@ -103,6 +103,8 @@ export default function ProjectForm() {
                 ))}
                 <Button variant="ghost" onClick={addLinkField}>Add Link</Button>
             </fieldset>
+
+            <Button variant="primary" type="submit">Submit</Button>
         </form>
     )
 }
