@@ -5,7 +5,7 @@ export default function EducationSection({ educationData }) {
         <section>
             {educationData.length > 0 && (
                 <>  
-                    <h1>Education</h1>
+                    <h2>Education</h2>
                     <ul>
                         {educationData.map((item) => (
                             <li key={item.id}>
