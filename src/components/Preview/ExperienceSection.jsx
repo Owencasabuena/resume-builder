@@ -9,7 +9,7 @@ export default function ExperienceSection({ experienceData }) {
             <li key={item.id}>
                 {item.companyName && <h3>{item.companyName}</h3>}
                 {item.position && <p>{item.position}</p>}
-                {(item.startDate && item.endDate) &&<p>{item.startDate} - {item.endDate}</p>}
+                {(item.startDate || item.endDate) &&<p>{item.startDate} - {item.endDate}</p>}
                 {item.location && <p>{item.location}</p>}
             </li>
         )
