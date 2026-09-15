@@ -1,8 +1,15 @@
+import Sidebar from './components/Editor/Sidebar'
 import ProfileForm from './components/Editor/ProfileForm'
 import EducationForm from './components/Editor/EducationForm'
 import ExperienceForm from './components/Editor/ExperienceForm'
+
+import Canvas from './components/Preview/Canvas'
+import ProfileSection from './components/Preview/ProfileSection'
+import EducationSection from './components/Preview/EducationSection'
+import ExperienceSection from './components/Preview/ExperienceSection'
+
 import { useState } from 'react'
-import Sidebar from './components/Editor/Sidebar'
+
 
 function App() {
   const [resumeData, setResumeData] = useState({
@@ -93,6 +100,11 @@ function App() {
         <Sidebar activeSection={activeSection} onSelectSection={handleSelectSection} />
         {renderActiveSection()}
 
+        <Canvas>
+          <ProfileSection profileData={resumeData.personalInfo} />
+          <EducationSection educationData={resumeData.educationInfo} />
+          <ExperienceSection experienceData={resumeData.experienceInfo} />
+        </Canvas>
       </main>
       
       <footer></footer>
