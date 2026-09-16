@@ -1,0 +1,25 @@
+:root {
+    --color-bg: hsl(0, 0%, 95%);
+    --color-bg-dark: hsl(0, 0%, 90%);
+    --color-bg-light: hsl(0, 0%, 100%);
+    --color-text: hsl(0, 0%, 5%);
+    --color-text-muted: hsl(0, 0%, 30%);
+
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --shadow-sm: 0 2px 8px hsl(0 0% 0% / 0.12);
+
+    --font-body: system-ui, sans-serif;
+    --font-size-body: 1rem;
+    --line-height-body: 1.5;
+
+    --page-width: 210mm;
+    --page-min-height: 297mm;
+    --page-padding: 18mm;
+}
