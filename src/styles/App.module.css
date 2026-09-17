@@ -1,0 +1,79 @@
+/* ── App Layout ── */
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: var(--space-md) var(--space-xl);
+    background-color: var(--color-bg-light);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.headerTitle {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+    overflow: hidden;
+}
+
+.editorPanel {
+    display: flex;
+    flex-shrink: 0;
+    width: 380px;
+    gap: var(--space-md);
+}
+
+.formArea {
+    flex: 1;
+    overflow-y: auto;
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.previewPanel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: var(--space-md) 0;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm) var(--space-xl);
+    background-color: var(--color-bg-light);
+    border-top: 1px solid var(--color-bg-dark);
+}
+
+.footerLink {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footerLink:hover {
+    color: var(--color-text);
+}

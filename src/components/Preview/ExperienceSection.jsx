@@ -1,3 +1,5 @@
+import styles from '../../styles/ResumeSection.module.css';
+
 export default function ExperienceSection({ experienceData }) {
     if (!experienceData) return null;
     if (experienceData.length === 0) return null;
@@ -7,20 +9,24 @@ export default function ExperienceSection({ experienceData }) {
 
         return (
             <li key={item.id}>
-                {item.companyName && <h3>{item.companyName}</h3>}
-                {item.position && <p>{item.position}</p>}
-                {(item.startDate || item.endDate) &&<p>{item.startDate} - {item.endDate}</p>}
-                {item.location && <p>{item.location}</p>}
+                <div className={styles.itemHeader}>
+                    {item.companyName && <h3 className={styles.itemTitle}>{item.companyName}</h3>}
+                    {(item.startDate || item.endDate) && (
+                        <span className={styles.itemDate}>{item.startDate} – {item.endDate}</span>
+                    )}
+                </div>
+                {item.position && <p className={styles.itemSubtitle}>{item.position}</p>}
+                {item.location && <p className={styles.itemLocation}>{item.location}</p>}
             </li>
         )
     }
 
     return (
-        <section>
+        <section className={styles.section}>
             {experienceData.length > 0 && (
                 <>  
-                    <h2>Experience</h2>
-                    <ul>
+                    <h2 className={styles.heading}>Experience</h2>
+                    <ul className={styles.list}>
                         {experienceData.map((item) => (
                             <ExperienceItem key={item.id} item={item} />
                         ))}

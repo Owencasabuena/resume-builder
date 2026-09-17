@@ -1,4 +1,5 @@
 import Button from "../common/Button";
+import styles from "../../styles/Sidebar.module.css";
 
 export default function Sidebar({ activeSection, onSelectSection }) {
     const sections = [
@@ -8,7 +9,7 @@ export default function Sidebar({ activeSection, onSelectSection }) {
     ];
 
     return (
-        <aside>
+        <aside className={styles.sidebar}>
             {sections.map(section => (
                 <Button
                     key={section.id}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Button from '../common/Button';
+import styles from '../../styles/Form.module.css';
 
 export default function ExperienceForm({ experienceData, setExperienceData }) {
     const [selectedId, setSelectedId] = useState(experienceData[0]?.id ?? null);
@@ -39,53 +40,58 @@ export default function ExperienceForm({ experienceData, setExperienceData }) {
     };
 
     return (
-        <>    
+        <div className={styles.form}>    
             {experienceData.length === 0 && (
-                <p>No experience entries available. Please add one.</p>
+                <p className={styles.emptyState}>No experience entries available. Please add one.</p>
             )}
 
             {experienceData.map((item) => {
                 return (
-                    <Button variant="ghost" onClick={() => setSelectedId(item.id)}>
-                        <h3>{item.companyName}</h3>
+                    <Button key={item.id} variant="ghost" className={styles.entryButton} onClick={() => setSelectedId(item.id)}>
+                        <h3>{item.companyName || 'Untitled'}</h3>
                     </Button>
                 )
             })}
 
             {selectedExperience && (
-                <form>
-                    <fieldset>
-                        <legend>Experience Details</legend>
-                        <label htmlFor="companyName">Company Name:</label>
+                <form className={styles.form}>
+                    <fieldset className={styles.fieldset}>
+                        <legend className={styles.legend}>Experience Details</legend>
+                        <label className={styles.label} htmlFor="companyName">Company Name:</label>
                         <input
+                            className={styles.input}
                             type="text"
                             name="companyName"
                             value={selectedExperience.companyName}
                             onChange={handleInputChange}
                         />
-                        <label htmlFor="position">Position:</label>
+                        <label className={styles.label} htmlFor="position">Position:</label>
                         <input
+                            className={styles.input}
                             type="text"
                             name="position"
                             value={selectedExperience.position}
                             onChange={handleInputChange}
                         />
-                        <label htmlFor="startDate">Start Date:</label>
+                        <label className={styles.label} htmlFor="startDate">Start Date:</label>
                         <input
+                            className={styles.input}
                             type="text"
                             name="startDate"
                             value={selectedExperience.startDate}
                             onChange={handleInputChange}
                         />
-                        <label htmlFor="endDate">End Date:</label>
+                        <label className={styles.label} htmlFor="endDate">End Date:</label>
                         <input
+                            className={styles.input}
                             type="text"
                             name="endDate"
                             value={selectedExperience.endDate}
                             onChange={handleInputChange}
                         />
-                        <label htmlFor="location">Location:</label>
+                        <label className={styles.label} htmlFor="location">Location:</label>
                         <input
+                            className={styles.input}
                             type="text"
                             name="location"
                             value={selectedExperience.location}
@@ -93,12 +99,14 @@ export default function ExperienceForm({ experienceData, setExperienceData }) {
                         />
                     </fieldset> 
 
-                    <Button variant="ghost" onClick={handleCancelExperience}>Cancel</Button>
-                    <Button variant="primary" onClick={handleSaveExperience}>Save</Button>
+                    <div className={styles.actions}>
+                        <Button variant="ghost" onClick={handleCancelExperience}>Cancel</Button>
+                        <Button variant="primary" onClick={handleSaveExperience}>Save</Button>
+                    </div>
                 </form>
             )}
 
             <Button variant="ghost" onClick={handleAddExperience}>Add Experience</Button>
-        </>
+        </div>
     )
 }

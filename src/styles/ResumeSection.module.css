@@ -1,0 +1,52 @@
+/* ── Resume Section (Education / Experience on Preview) ── */
+.section {
+    margin-bottom: var(--space-lg);
+}
+
+.heading {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text);
+    border-bottom: 1.5px solid var(--color-text);
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-sm);
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.itemHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.itemTitle {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.itemDate {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.itemSubtitle {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.itemLocation {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+}

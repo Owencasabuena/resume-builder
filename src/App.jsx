@@ -8,6 +8,8 @@ import ProfileSection from './components/Preview/ProfileSection'
 import EducationSection from './components/Preview/EducationSection'
 import ExperienceSection from './components/Preview/ExperienceSection'
 
+import styles from './styles/App.module.css'
+
 import { useState } from 'react'
 
 
@@ -93,22 +95,39 @@ function App() {
   };
 
   return (
-    <>
-      <header></header>
+    <div className={styles.app}>
+      <header className={styles.header}>
+        <span className={styles.headerTitle}>Resume Builder</span>
+      </header>
 
-      <main>
-        <Sidebar activeSection={activeSection} onSelectSection={handleSelectSection} />
-        {renderActiveSection()}
+      <main className={styles.main}>
+        <div className={styles.editorPanel}>
+          <Sidebar activeSection={activeSection} onSelectSection={handleSelectSection} />
+          <div className={styles.formArea}>
+            {renderActiveSection()}
+          </div>
+        </div>
 
-        <Canvas>
-          <ProfileSection profileData={resumeData.personalInfo} />
-          <EducationSection educationData={resumeData.educationInfo} />
-          <ExperienceSection experienceData={resumeData.experienceInfo} />
-        </Canvas>
+        <div className={styles.previewPanel}>
+          <Canvas>
+            <ProfileSection profileData={resumeData.personalInfo} />
+            <EducationSection educationData={resumeData.educationInfo} />
+            <ExperienceSection experienceData={resumeData.experienceInfo} />
+          </Canvas>
+        </div>
       </main>
       
-      <footer></footer>
-    </>
+      <footer className={styles.footer}>
+        <a
+          className={styles.footerLink}
+          href="https://github.com/Owencasabuena"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Owencasabuena
+        </a>
+      </footer>
+    </div>
   )
 }
 

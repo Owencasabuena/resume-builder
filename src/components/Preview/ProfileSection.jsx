@@ -1,3 +1,5 @@
+import styles from '../../styles/ProfileSection.module.css';
+
 export default function ProfileSection({ profileData }) {
     if (!profileData) return null;
     const links = profileData.links ?? [];
@@ -14,18 +16,18 @@ export default function ProfileSection({ profileData }) {
     }
 
     return (
-        <section>
-            <h2>{profileData.fullName}</h2>
-            <div className="">
+        <section className={styles.profile}>
+            <h2 className={styles.name}>{profileData.fullName}</h2>
+            <div className={styles.contactRow}>
                 <p>{profileData.address}</p>
                 <p>{profileData.email}</p>
                 <p>{profileData.phone}</p>
             </div>
 
             {links.length > 0 && (
-                <div className="">
-                    <h3>Links</h3>
-                    <ul>
+                <div>
+                    <h3 className={styles.linksHeading}>Links</h3>
+                    <ul className={styles.linksList}>
                         {links.map((link) => (
                             <li key={link.id}>
                                 <Link value={link.value} />

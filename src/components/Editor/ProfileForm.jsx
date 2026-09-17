@@ -1,4 +1,5 @@
 import Button from "../common/Button";
+import styles from "../../styles/Form.module.css";
 
 export default function ProfileForm({ profileData, setProfileData }) {
     const handleChange = (e) => {
@@ -34,32 +35,36 @@ export default function ProfileForm({ profileData, setProfileData }) {
     };
 
     return (
-        <form>
-            <fieldset>
-                <legend>Personal Information</legend>
-                <label>Full Name:</label>
+        <form className={styles.form}>
+            <fieldset className={styles.fieldset}>
+                <legend className={styles.legend}>Personal Information</legend>
+                <label className={styles.label}>Full Name:</label>
                 <input
+                    className={styles.input}
                     type="text"
                     name="fullName"
                     value={profileData.fullName}
                     onChange={handleChange}
                 />
-                <label>Address:</label>
+                <label className={styles.label}>Address:</label>
                 <input
+                    className={styles.input}
                     type="text"
                     name="address"
                     value={profileData.address}
                     onChange={handleChange}
                 />
-                <label>Email:</label>
+                <label className={styles.label}>Email:</label>
                 <input
+                    className={styles.input}
                     type="email"
                     name="email"
                     value={profileData.email}
                     onChange={handleChange}
                 />
-                <label>Phone:</label>
+                <label className={styles.label}>Phone:</label>
                 <input
+                    className={styles.input}
                     type="tel"
                     name="phone"
                     value={profileData.phone}
@@ -67,25 +72,31 @@ export default function ProfileForm({ profileData, setProfileData }) {
                 />
             </fieldset>
 
-            <fieldset>
-                <legend>Links</legend>
+            <fieldset className={styles.fieldset}>
+                <legend className={styles.legend}>Links</legend>
                 {profileData.links.map((link) => (
-                    <div key={link.id}>
-                        <label>Label:</label>
-                        <input 
-                            type="text" 
-                            name="label" 
-                            value={link.label}
-                            onChange={(e) => handleLinkChange(link.id, "label", e.target.value)}
-                        />
+                    <div key={link.id} className={styles.linkRow}>
+                        <div>
+                            <label className={styles.label}>Label:</label>
+                            <input 
+                                className={styles.input}
+                                type="text" 
+                                name="label" 
+                                value={link.label}
+                                onChange={(e) => handleLinkChange(link.id, "label", e.target.value)}
+                            />
+                        </div>
 
-                        <label>Value:</label>
-                        <input 
-                            type="text" 
-                            name="value" 
-                            value={link.value}
-                            onChange={(e) => handleLinkChange(link.id, "value", e.target.value)}
-                        />
+                        <div>
+                            <label className={styles.label}>Value:</label>
+                            <input 
+                                className={styles.input}
+                                type="text" 
+                                name="value" 
+                                value={link.value}
+                                onChange={(e) => handleLinkChange(link.id, "value", e.target.value)}
+                            />
+                        </div>
                     </div>
                 ))}
                 <Button variant="ghost" onClick={addLinkField}>Add Link</Button>

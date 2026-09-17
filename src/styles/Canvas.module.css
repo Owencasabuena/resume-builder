@@ -1,0 +1,11 @@
+/* ── Canvas / Bondpaper ── */
+.canvas {
+    width: var(--page-width);
+    min-height: var(--page-min-height);
+    padding: var(--page-padding);
+    background-color: var(--color-bg-light);
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    color: var(--color-text);
+}

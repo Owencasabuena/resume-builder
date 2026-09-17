@@ -1,6 +1,8 @@
+import styles from '../../styles/Canvas.module.css';
+
 export default function Canvas({ children }) {
     return (
-        <article>
+        <article className={styles.canvas}>
             {children}
         </article>
     )

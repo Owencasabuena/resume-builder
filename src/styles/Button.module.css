@@ -1,4 +1,56 @@
-.button {}
-.primary {}
-.secondary {}
-.ghost {}
+/* ── Button ── */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.button:disabled {
+    cursor: default;
+}
+
+.primary {
+    background-color: var(--color-text);
+    color: var(--color-bg-light);
+    border-color: var(--color-text);
+}
+
+.primary:hover:not(:disabled) {
+    background-color: var(--color-text-muted);
+    border-color: var(--color-text-muted);
+}
+
+.primary:disabled {
+    background-color: var(--color-text);
+    color: var(--color-bg-light);
+}
+
+.secondary {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    border-color: var(--color-bg-dark);
+}
+
+.secondary:hover:not(:disabled) {
+    background-color: var(--color-bg-dark);
+}
+
+.ghost {
+    background-color: transparent;
+    color: var(--color-text-muted);
+    border-color: transparent;
+}
+
+.ghost:hover:not(:disabled) {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../common/Button";
+import styles from "../../styles/Form.module.css";
 
 export default function EducationForm({ educationData, setEducationData }) {
     const [selectedId, setSelectedId] = useState(educationData[0]?.id ?? null);
@@ -39,53 +40,58 @@ export default function EducationForm({ educationData, setEducationData }) {
     };
 
     return (
-        <>    
+        <div className={styles.form}>    
             {educationData.length === 0 && (
-                <p>No education entries available. Please add one.</p>
+                <p className={styles.emptyState}>No education entries available. Please add one.</p>
             )}
 
             {educationData.map((item) => {
                 return (
-                    <Button variant="ghost" onClick={() => setSelectedId(item.id)}>
-                        <h3>{item.schoolName}</h3>
+                    <Button key={item.id} variant="ghost" className={styles.entryButton} onClick={() => setSelectedId(item.id)}>
+                        <h3>{item.schoolName || 'Untitled'}</h3>
                     </Button>
                 )
             })}
 
             {selectedEducation  && (
-                <form>
-                    <fieldset>
-                        <legend>Education Information</legend>
-                        <label>School Name:</label>
+                <form className={styles.form}>
+                    <fieldset className={styles.fieldset}>
+                        <legend className={styles.legend}>Education Information</legend>
+                        <label className={styles.label}>School Name:</label>
                         <input
+                            className={styles.input}
                             type="text"
                             name="schoolName"
                             value={selectedEducation.schoolName}
                             onChange={handleInputChange}
                         />
-                        <label>Degree:</label>
+                        <label className={styles.label}>Degree:</label>
                         <input
+                            className={styles.input}
                             type="text"
                             name="degree"
                             value={selectedEducation.degree}
                             onChange={handleInputChange}
                         />
-                        <label>Start Date:</label>
+                        <label className={styles.label}>Start Date:</label>
                         <input
+                            className={styles.input}
                             type="text"
                             name="startDate"
                             value={selectedEducation.startDate}
                             onChange={handleInputChange}
                         />
-                        <label>End Date:</label>
+                        <label className={styles.label}>End Date:</label>
                         <input
+                            className={styles.input}
                             type="text"
                             name="endDate"
                             value={selectedEducation.endDate}
                             onChange={handleInputChange}
                         />
-                        <label>Location:</label>
+                        <label className={styles.label}>Location:</label>
                         <input
+                            className={styles.input}
                             type="text"
                             name="location"
                             value={selectedEducation.location}
@@ -93,12 +99,14 @@ export default function EducationForm({ educationData, setEducationData }) {
                         />
                     </fieldset> 
 
-                    <Button variant="ghost" onClick={handleCancelEducation}>Cancel</Button>
-                    <Button variant="primary" onClick={handleSaveEducation}>Save</Button>
+                    <div className={styles.actions}>
+                        <Button variant="ghost" onClick={handleCancelEducation}>Cancel</Button>
+                        <Button variant="primary" onClick={handleSaveEducation}>Save</Button>
+                    </div>
                 </form>
             )}
 
             <Button variant="ghost" onClick={handleAddEducation}>Add Education</Button>
-        </>
+        </div>
     )
 }
