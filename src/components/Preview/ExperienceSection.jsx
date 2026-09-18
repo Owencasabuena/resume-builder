@@ -17,6 +17,7 @@ export default function ExperienceSection({ experienceData }) {
                 </div>
                 {item.position && <p className={styles.itemSubtitle}>{item.position}</p>}
                 {item.location && <p className={styles.itemLocation}>{item.location}</p>}
+                {item.description && <p className={styles.itemDescription}>{item.description}</p>}
             </li>
         )
     }

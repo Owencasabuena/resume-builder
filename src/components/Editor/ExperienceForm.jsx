@@ -17,7 +17,7 @@ export default function ExperienceForm({ experienceData, setExperienceData }) {
             });
         });
     };
-    
+
     const handleAddExperience = () => {
         const newExperience = {
             id: crypto.randomUUID(),
@@ -25,12 +25,13 @@ export default function ExperienceForm({ experienceData, setExperienceData }) {
             position: '',
             startDate: '',
             endDate: '',
-            location: ''
+            location: '',
+            description: ''
         };
         setExperienceData(prevData => [...prevData, newExperience]);
         setSelectedId(newExperience.id);
     };
-    
+
     const handleCancelExperience = () => {
         setSelectedId(null);
     };
@@ -40,7 +41,7 @@ export default function ExperienceForm({ experienceData, setExperienceData }) {
     };
 
     return (
-        <div className={styles.form}>    
+        <div className={styles.form}>
             {experienceData.length === 0 && (
                 <p className={styles.emptyState}>No experience entries available. Please add one.</p>
             )}
@@ -97,7 +98,15 @@ export default function ExperienceForm({ experienceData, setExperienceData }) {
                             value={selectedExperience.location}
                             onChange={handleInputChange}
                         />
-                    </fieldset> 
+                        <label className={styles.label} htmlFor="description">Description:</label>
+                        <textarea
+                            className={styles.textarea}
+                            name="description"
+                            value={selectedExperience.description}
+                            onChange={handleInputChange}
+                            rows={4}
+                        />
+                    </fieldset>
 
                     <div className={styles.actions}>
                         <Button variant="ghost" onClick={handleCancelExperience}>Cancel</Button>

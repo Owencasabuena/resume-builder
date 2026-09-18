@@ -39,10 +39,25 @@
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.input:focus {
+.input:focus,
+.textarea:focus {
     outline: none;
     border-color: var(--color-text-muted);
     box-shadow: 0 0 0 2px hsl(0 0% 0% / 0.06);
+}
+
+.textarea {
+    width: 100%;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--color-bg-dark);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    resize: vertical;
+    line-height: var(--line-height-body);
 }
 
 .linkRow {

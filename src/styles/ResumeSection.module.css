@@ -50,3 +50,11 @@
     color: var(--color-text-muted);
     font-style: italic;
 }
+
+.itemDescription {
+    font-size: 0.85rem;
+    color: var(--color-text);
+    line-height: 1.5;
+    margin-top: var(--space-xs);
+    white-space: pre-line;
+}

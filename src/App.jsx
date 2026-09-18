@@ -43,7 +43,8 @@ function App() {
           position: 'Software Engineer',
           startDate: '2024',
           endDate: 'present',
-          location: 'Mountain View, CA'
+          location: 'Mountain View, CA',
+          description: ''
       }
     ]
   });
