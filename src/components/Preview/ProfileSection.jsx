@@ -4,14 +4,14 @@ export default function ProfileSection({ profileData }) {
     if (!profileData) return null;
     const links = profileData.links ?? [];
 
-    function Link({ value }) {
+    function Link({ label, value }) {
         if (!value) return null;
 
         const isValidUrl = value.startsWith('http');
         if (isValidUrl) {
             return <a href={value} target="_blank" rel="noopener noreferrer">{value}</a>
         } else {
-            return <span>{value}</span>
+            return <span>{label ? `${label}: ${value}` : value}</span>
         }
     }
 
@@ -30,7 +30,7 @@ export default function ProfileSection({ profileData }) {
                     <ul className={styles.linksList}>
                         {links.map((link) => (
                             <li key={link.id}>
-                                <Link value={link.value} />
+                                <Link label={link.label} value={link.value} />
                             </li>
                         ))}
                     </ul>
